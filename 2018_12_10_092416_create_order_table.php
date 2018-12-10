@@ -19,10 +19,10 @@ class CreateOrderTable extends Migration
             $table->integer('order_qty');
             $table->decimal('order_amount', 9, 2);
             $table->integer('order_product_id');
-            $table->integer('order_customer_id');
+            $table->integer('user_id');
             $table->foreign('order_product_id')->references('product_id')->on('product')
-                  ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('order_customer_id')->references('customer_id')->on('customer')
+                  ->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
                   ->onUpdate('cascade')->onDelete('restrict');
 //            $table->timestamps();
         });
